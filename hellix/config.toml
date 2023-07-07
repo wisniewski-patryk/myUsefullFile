@@ -1,0 +1,14 @@
+theme = "onedarker"
+
+[editor]
+line-number = "relative"
+cursorline = true
+
+[editor.file-picker]
+hidden = false
+
+[editor.whitespace]
+render = "all"
+
+[editor.indent-guides]
+render = true
