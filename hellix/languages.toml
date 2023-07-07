@@ -1,1 +1,4 @@
 # commment for file hold
+[[language]]
+name = "c-sharp"
+indent = { tab-width = 2, unit = "\t" }
