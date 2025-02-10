@@ -1,14 +1,17 @@
-theme = "onedarker"
+theme = "ayu_dark"
 
 [editor]
-line-number = "relative"
-cursorline = true
-
-[editor.file-picker]
-hidden = false
+bufferline = "multiple"
+true-color = true
 
 [editor.whitespace]
 render = "all"
 
 [editor.indent-guides]
 render = true
+
+[editor.statusline]
+left = ["mode", "spinner", "file-name", "read-only-indicator", "file-modification-indicator"]
+center = ["version-control"]
+right = ["diagnostics", "selections", "register", "position", "file-encoding", "register"]
+separator = "|"
