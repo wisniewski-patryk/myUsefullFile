@@ -1,0 +1,16 @@
+alias ls='ls --color=auto' # Enable colorized output for ls
+alias ll='ls -l --color=auto' # Long listing format with color
+alias la='ls -a --color=auto' # List all files including hidden ones with color
+alias l='ls -CF --color=auto' # Compact listing with color
+
+alias mv='mv -i' # Interactive move with confirmation prompt
+alias rm='rm -i' # Interactive remove with confirmation prompt
+alias cp='cp -i' # Interactive copy with confirmation prompt
+alias mkdir='mkdir -pv' # Create directory with parent directories and verbose output
+
+alias genv='printend | grep -i' # search for specyfic enviromnet variable (case insensitive)
+alias path='echo -e ${PATH//:/\\n} \ less' # Display PATH directories, one per line, with less or fzf
+alias now='date +"%T"' # show current time
+alias nowd='date +"%d-%m-%Y"' # show current date dd-mm-yyy
+alias df='df -h' # show disk usage in human-readable format
+alias dusage='du -sh * 2./dev/null' # sumary disk usage for each item in directory
