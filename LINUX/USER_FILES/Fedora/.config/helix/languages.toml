@@ -1,0 +1,418 @@
+[language-server]
+bash-language-server = { command = "bash-language-server", args = ["start"] }
+superhtml = { command = "superhtml", args = ["lsp"] }
+taplo = { command = "taplo", args = ["lsp", "stdio"] }
+vscode-css-language-server = { command = "vscode-css-language-server", args = ["--stdio"], config = { provideFormatter = true, css = { validate = { enable = true } } } }
+# vscode-html-language-server = { command = "vscode-html-language-server", args = ["--stdio"], config = { provideFormatter = true } }
+vscode-json-language-server = { command = "vscode-json-language-server", args = ["--stdio"], config = { provideFormatter = true, json = { validate = { enable = true } } } }
+ruby-lsp = { command = "ruby-lsp" }
+solargraph = { command = "solargraph", args = ["stdio"] }
+zls = { command = "zls" }
+
+[[language]]
+name = "bash"
+scope = "source.bash"
+injection-regex = "(shell|bash|zsh|sh)"
+file-types = [
+  "sh",
+  "bash",
+  "ash",
+  "dash",
+  "ksh",
+  "mksh",
+  "zsh",
+  "zshenv",
+  "zlogin",
+  "zlogout",
+  "zprofile",
+  "zshrc",
+  "eclass",
+  "ebuild",
+  "bazelrc",
+  "Renviron",
+  "zsh-theme",
+  "cshrc",
+  "tcshrc",
+  "bashrc_Apple_Terminal",
+  "zshrc_Apple_Terminal",
+  { glob = "i3/config" },
+  { glob = "sway/config" },
+  { glob = "tmux.conf" },
+  { glob = ".bash_history" },
+  { glob = ".bash_login" },
+  { glob = ".bash_logout" },
+  { glob = ".bash_profile" },
+  { glob = ".bashrc" },
+  { glob = ".profile" },
+  { glob = ".zshenv" },
+  { glob = ".zlogin" },
+  { glob = ".zlogout" },
+  { glob = ".zprofile" },
+  { glob = ".zshrc" },
+  { glob = ".zimrc" },
+  { glob = "APKBUILD" },
+  { glob = ".bash_aliases" },
+  { glob = ".Renviron" },
+  { glob = ".xprofile" },
+  { glob = ".xsession" },
+  { glob = ".xsessionrc" },
+  { glob = ".yashrc" },
+  { glob = ".yash_profile" },
+  { glob = ".hushlogin" },
+]
+shebangs = ["sh", "bash", "dash", "zsh"]
+comment-token = "#"
+language-servers = [ "bash-language-server" ]
+indent = { tab-width = 2, unit = "  " }
+
+[[grammar]]
+name = "bash"
+source = { git = "https://github.com/tree-sitter/tree-sitter-bash", rev = "487734f87fd87118028a65a4599352fa99c9cde8" }
+
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio"]
+config.hostInfo = "helix"
+
+[language-server.typescript-language-server.config.typescript.inlayHints]
+includeInlayEnumMemberValueHints = true
+includeInlayFunctionLikeReturnTypeHints = true
+includeInlayFunctionParameterTypeHints = true
+includeInlayParameterNameHints = "all"
+includeInlayParameterNameHintsWhenArgumentMatchesName = true
+includeInlayPropertyDeclarationTypeHints = true
+includeInlayVariableTypeHints = true
+
+[language-server.typescript-language-server.config.javascript.inlayHints]
+includeInlayEnumMemberValueHints = true
+includeInlayFunctionLikeReturnTypeHints = true
+includeInlayFunctionParameterTypeHints = true
+includeInlayParameterNameHints = "all"
+includeInlayParameterNameHintsWhenArgumentMatchesName = true
+includeInlayPropertyDeclarationTypeHints = true
+includeInlayVariableTypeHints = true
+
+[[language]]
+name = "toml"
+scope = "source.toml"
+injection-regex = "toml"
+file-types = ["toml", { glob = "pdm.lock" }, { glob = "poetry.lock" }, { glob = "Cargo.lock" }, { glob = "uv.lock" }]
+comment-token = "#"
+language-servers = [ "taplo", "tombi" ]
+indent = { tab-width = 2, unit = "  " }
+
+[[grammar]]
+name = "toml"
+source = { git = "https://github.com/ikatyang/tree-sitter-toml", rev = "7cff70bbcbbc62001b465603ca1ea88edd668704" }
+
+[[language]]
+name = "html"
+scope = "text.html.basic"
+injection-regex = "html"
+file-types = ["html", "htm", "shtml", "xhtml", "xht", "jsp", "asp", "aspx", "jshtm", "volt", "rhtml", "cshtml"]
+block-comment-tokens = { start = "<!--", end = "-->" }
+language-servers = [ "vscode-html-language-server", "superhtml" ]
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[[grammar]]
+name = "html"
+source = { git = "https://github.com/tree-sitter/tree-sitter-html", rev = "cbb91a0ff3621245e890d1c50cc811bffb77a26b" }
+
+
+[[language]]
+name = "css"
+scope = "source.css"
+injection-regex = "css"
+file-types = ["css"]
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "vscode-css-language-server" ]
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[[grammar]]
+name = "css"
+source = { git = "https://github.com/tree-sitter/tree-sitter-css", rev = "769203d0f9abe1a9a691ac2b9fe4bb4397a73c51" }
+
+[[language]]
+name = "scss"
+scope = "source.scss"
+injection-regex = "scss"
+file-types = ["scss"]
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "vscode-css-language-server" ]
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[[grammar]]
+name = "scss"
+source = { git = "https://github.com/serenadeai/tree-sitter-scss", rev = "c478c6868648eff49eb04a4df90d703dc45b312a" }
+
+[[language]]
+name = "javascript"
+scope = "source.js"
+injection-regex = "(js|javascript)"
+language-id = "javascript"
+file-types = ["js", "mjs", "cjs", "rules", "es6", "pac", { glob = ".node_repl_history" }, { glob = "jakefile" }]
+shebangs = ["node"]
+roots = [ "package.json", "jsconfig.json" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "typescript-language-server" ]
+indent = { tab-width = 2, unit = "  " }
+
+[language.debugger]
+name = "js-debug-dap"
+transport = "tcp"
+port-arg = "{} 127.0.0.1"
+# args consisting of cmd (node) and path to adapter should be added to user's configuration
+quirks = { absolute-paths = true }
+
+[[language.debugger.templates]]
+name = "source"
+request = "launch"
+completion = [ { name = "main", completion = "filename", default = "index.js" } ]
+args = { program = "{0}", skipFiles = [ "<node_internals>/**" ] }
+
+[[grammar]]
+name = "javascript"
+source = { git = "https://github.com/tree-sitter/tree-sitter-javascript", rev = "f772967f7b7bc7c28f845be2420a38472b16a8ee" }
+
+[[language]]
+name = "jsx"
+scope = "source.jsx"
+injection-regex = "jsx"
+language-id = "javascriptreact"
+file-types = ["jsx"]
+roots = [ "package.json", "jsconfig.json" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "typescript-language-server" ]
+indent = { tab-width = 2, unit = "  " }
+grammar = "javascript"
+
+[[language]]
+name = "typescript"
+scope = "source.ts"
+injection-regex = "(ts|typescript)"
+language-id = "typescript"
+file-types = ["ts", "mts", "cts"]
+shebangs = ["deno", "bun", "ts-node"]
+roots = [ "package.json", "tsconfig.json" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "typescript-language-server" ]
+indent = { tab-width = 2, unit = "  " }
+
+[[grammar]]
+name = "typescript"
+source = { git = "https://github.com/tree-sitter/tree-sitter-typescript", rev = "b1bf4825d9eaa0f3bdeb1e52f099533328acfbdf", subpath = "typescript" }
+
+[[language]]
+name = "typespec"
+scope = "source.typespec"
+injection-regex = "(tsp|typespec)"
+language-id = "typespec"
+file-types = ["tsp"]
+roots = ["tspconfig.yaml"]
+auto-format = true
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = ["typespec"]
+indent = { tab-width = 2, unit = "  " }
+
+[[grammar]]
+name = "typespec"
+source = { git = "https://github.com/happenslol/tree-sitter-typespec", rev = "0ee05546d73d8eb64635ed8125de6f35c77759fe" }
+
+[[language]]
+name = "tsx"
+scope = "source.tsx"
+injection-regex = "(tsx)" # |typescript
+language-id = "typescriptreact"
+file-types = ["tsx"]
+roots = [ "package.json", "tsconfig.json" ]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+language-servers = [ "typescript-language-server" ]
+indent = { tab-width = 2, unit = "  " }
+
+[[grammar]]
+name = "tsx"
+source = { git = "https://github.com/tree-sitter/tree-sitter-typescript", rev = "b1bf4825d9eaa0f3bdeb1e52f099533328acfbdf", subpath = "tsx" }
+
+[[language]]
+name = "json"
+scope = "source.json"
+injection-regex = "json"
+file-types = [
+  "json",
+  "arb",
+  "ipynb",
+  "geojson",
+  "gltf",
+  "webmanifest",
+  { glob = "flake.lock" },
+  { glob = ".babelrc" },
+  { glob = ".bowerrc" },
+  { glob = ".jscrc" },
+  "js.map",
+  "ts.map",
+  "css.map",
+  { glob = ".jslintrc" },
+  "jsonl",
+  { glob = ".vuerc" },
+  { glob = "composer.lock" },
+  { glob = ".watchmanconfig" },
+  "avsc",
+  "ldtk",
+  "ldtkl",
+  { glob = ".swift-format" },
+  "sublime-build",
+  "sublime-color-scheme",
+  "sublime-commands",
+  "sublime-completions",
+  "sublime-keymap",
+  "sublime-macro",
+  "sublime-menu",
+  "sublime-mousemap",
+  "sublime-project",
+  "sublime-settings",
+  "sublime-theme",
+  "sublime-workspace"
+]
+language-servers = [ "vscode-json-language-server" ]
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[[grammar]]
+name = "json"
+source = { git = "https://github.com/tree-sitter/tree-sitter-json", rev = "73076754005a460947cafe8e03a8cf5fa4fa2938" }
+
+[[language]]
+name = "jsonc"
+scope = "source.json"
+injection-regex = "jsonc"
+file-types = ["jsonc", { glob = "{t,j}sconfig.json" }, { glob = "bun.lock" }]
+comment-token = "//"
+block-comment-tokens = { start = "/*", end = "*/" }
+grammar = "json"
+language-servers = [ "vscode-json-language-server" ]
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+# https://www.w3.org/TR/json-ld/
+[[language]]
+name = "json-ld"
+scope = "source.json-ld"
+injection-regex = "json-ld"
+grammar = "json"
+file-types = ["jsonld"]
+language-servers = ["vscode-json-language-server"]
+auto-format = true
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "json5"
+scope = "source.json5"
+injection-regex = "json5"
+file-types = ["json5"]
+language-servers = []
+comment-token = "//"
+indent = { tab-width = 4, unit = "    " }
+# https://json5.org
+
+[[grammar]]
+name = "json5"
+source = { git = "https://github.com/Joakker/tree-sitter-json5", rev = "c23f7a9b1ee7d45f516496b1e0e4be067264fa0d" }
+
+
+[[language]]
+name = "ruby"
+scope = "source.ruby"
+injection-regex = "ruby"
+file-types = [
+  "rb",
+  "rake",
+  "irb",
+  "gemspec",
+  "rabl",
+  "jbuilder",
+  "jb",
+  "podspec",
+  "rjs",
+  "rbi",
+  "rbs",
+  { glob = "rakefile" },
+  { glob = "gemfile" },
+  { glob = "Rakefile" },
+  { glob = "Gemfile" },
+  { glob = "Podfile" },
+  { glob = "Vagrantfile" },
+  { glob = "Brewfile" },
+  { glob = "Guardfile" },
+  { glob = "Capfile" },
+  { glob = "Cheffile" },
+  { glob = "Hobofile" },
+  { glob = "Appraisals" },
+  { glob = "Rantfile" },
+  { glob = "Berksfile" },
+  { glob = "Berksfile.lock" },
+  { glob = "Thorfile" },
+  { glob = "Puppetfile" },
+  { glob = "Fastfile" },
+  { glob = "Appfile" },
+  { glob = "Deliverfile" },
+  { glob = "Matchfile" },
+  { glob = "Scanfile" },
+  { glob = "Snapfile" },
+  { glob = "Gymfile" },
+]
+shebangs = ["ruby"]
+comment-token = "#"
+language-servers = [ "ruby-lsp", "solargraph" ]
+indent = { tab-width = 2, unit = "  " }
+
+[[grammar]]
+name = "ruby"
+source = { git = "https://github.com/tree-sitter/tree-sitter-ruby", rev = "206c7077164372c596ffa8eaadb9435c28941364" }
+
+[[language]]
+name = "zig"
+scope = "source.zig"
+injection-regex = "zig"
+file-types = ["zig", "zon"]
+roots = ["build.zig"]
+auto-format = true
+comment-tokens = ["//", "///", "//!"]
+language-servers = [ "zls" ]
+indent = { tab-width = 4, unit = "    " }
+formatter = { command = "zig" , args = ["fmt", "--stdin"] }
+
+[language.debugger]
+name = "lldb-dap"
+transport = "stdio"
+command = "lldb-dap"
+
+[[language.debugger.templates]]
+name = "binary"
+request = "launch"
+completion = [ { name = "binary", completion = "filename" } ]
+args = { console = "internalConsole", program = "{0}" }
+
+[[language.debugger.templates]]
+name = "attach"
+request = "attach"
+completion = [ "pid" ]
+args = { console = "internalConsole", pid = "{0}" }
+
+[[language.debugger.templates]]
+name = "gdbserver attach"
+request = "attach"
+completion = [ { name = "lldb connect url", default = "connect://localhost:3333" }, { name = "file", completion = "filename" }, "pid" ]
+args = { console = "internalConsole", attachCommands = [ "platform select remote-gdb-server", "platform connect {0}", "file {1}", "attach {2}" ] }
+
+[[grammar]]
+name = "zig"
+source = { git = "https://github.com/tree-sitter-grammars/tree-sitter-zig", rev = "6479aa13f32f701c383083d8b28360ebd682fb7d" }
+

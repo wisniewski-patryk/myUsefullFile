@@ -1,0 +1,6 @@
+!.github/
+!.gitignore
+!.vscode/
+!.editorconfig
+!.prettierrc
+!.eslintrc.cjs
