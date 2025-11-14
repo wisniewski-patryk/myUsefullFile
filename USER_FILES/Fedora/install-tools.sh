@@ -1,9 +1,22 @@
 # /bin/bash
+
+# Generic function to enable COPR if not already enabled
+enable_copr_if_needed() {
+    local copr_name="$1"
+    if ! dnf copr list | grep -q "$copr_name"; then
+        echo "Enabling COPR repository: $copr_name"
+        sudo dnf copr enable "$copr_name"
+    else
+        echo "COPR repository $copr_name is already enabled"
+    fi
+}
+
 sudo dnf install btop
-sudo dnf copr enable scottames/ghostty
+
+enable_copr_if_needed "scottames/ghostty"
 sudo dnf install ghostty
 
-sudo dnf copr enable dejan/lazygit
+enable_copr_if_needed "dejan/lazygit"
 sudo dnf install lazygit
 
 install-lazydocker() {
@@ -25,10 +38,10 @@ install-lazydocker() {
   curl -L -o lazydocker.tar.gz $GITHUB_URL
   tar xzvf lazydocker.tar.gz lazydocker
   install -Dm 755 lazydocker -t "$DIR"
-  rm lazydocker lazydocker.tar.gz
+  rm -f lazydocker lazydocker.tar.gz
 }
 
-install-install-lazydocker
+install-lazydocker
 
 sudo dnf install wofi
 sudo dnf install wlogout
