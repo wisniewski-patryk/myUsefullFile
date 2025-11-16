@@ -47,3 +47,4 @@ sudo dnf install wofi
 sudo dnf install wlogout
 sudo dnf install waybar
 
+sudo dnf install pavucontrol
