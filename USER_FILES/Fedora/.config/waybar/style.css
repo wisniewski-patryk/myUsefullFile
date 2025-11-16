@@ -1,4 +1,6 @@
 @import "mocha.css";
+@define-color hypractive #cba6f7;
+@define-color base #1e1e2e;
 
 * {
   /* `otf-font-awesome` is required to be installed for icons */
@@ -64,6 +66,8 @@ button {
   box-shadow: inset 0 -3px @text;
 }
 
+#window,
+#workspaces,
 #clock,
 #battery,
 #cpu,
@@ -73,66 +77,76 @@ button {
 #backlight,
 #network,
 #pulseaudio,
+#pulseaudio-slider,
 #wireplumber,
 #tray,
 #mode,
 #idle_inhibitor,
 #scratchpad,
 #custom-power {
+  background-color: @base;
   color: @text;
   border-radius: 10px;
   padding: 0px 8px;
 }
 
-#window,
-#workspaces {
-  background-color: @base;
-  border-radius: 10px;
-  padding: 0px 8px;
-}
-
 #pulseaudio {
-  background-color: @base;
   color: @blue
 }
 
 #clock {
-  background-color: @base;
   color: @mauve;
 }
 
 #battery {
-  background-color: @base;
   color: @blue;
 }
 
 #battery.charging,
 #battery.plugged {
   color: @teal;
-  background-color: @base;
 }
-
 
 label:focus {
   background-color: @base;
 }
 
 #backlight {
-  background-color: @base;
   color: @text;
 }
 
 #network {
-  background-color: @base;
   color: @teal;
 }
 
 #network.disconnected {
-  background-color: @base;
   color: @red;
 }
 
 #custom-power {
-  background-color: @base;
   /* padding: 0px 12px; */
+}
+
+#pulseaudio-slider {
+  /* margin: 0px 8px */
+}
+
+#pulseaudio-slider slider {
+  min-height: 10px;
+  min-width: 10px;
+  opacity: 0;
+  border: none;
+  box-shadow: none;
+}
+
+#pulseaudio-slider trough {
+  min-height: 10px;
+  min-width: 100px;
+  border-radius: 5px;
+}
+
+#pulseaudio-slider highlight {
+  min-width: 0px;
+  border-radius: 5px;
+  background: @hypractive;
 }
