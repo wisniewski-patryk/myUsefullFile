@@ -1,7 +1,8 @@
 @import "mocha.css";
 @define-color hypractive #cba6f7;
 @define-color base #1e1e2e;
-
+@define-color buttonEmpty #505050;
+@define-color buttonUsed #b5b5b5;
 * {
   /* `otf-font-awesome` is required to be installed for icons */
   font-family: JetBrainsMono Nerd Font;
@@ -36,25 +37,18 @@ button {
   color: @surface1;
 }
 
-#workspaces button:hover {
-  color: @red;
-}
-
-#workspaces button.persistent {
-  color: @yellow;
-}
-
 #workspaces button.active {
-  color: @lavender;
-}
-
-
-#workspaces button.deafult {
-  color: @surface1;
+  font-size: 1.25em;
+  font-weight: bold;
+  color: @hypractive
 }
 
 #workspaces button.empty {
-  color: @overlay0;
+  color: @buttonEmpty;
+}
+
+#workspaces button:not(.empty):not(.active) {
+  color: @buttonUsed;
 }
 
 #workspaces button.urgent {
