@@ -1,3 +1,6 @@
 
 # Added by get-aspire-cli.sh
-export PATH="$HOME/.aspire/bin:$PATH"
+if ! [[ "$PATH" =~ "$HOME/.aspire/bin" ]]; then
+	PATH="$HOME/.aspire/bin:$PATH"
+fi
+export PATH
