@@ -104,7 +104,7 @@
   },
   "network": {
     "format": "{ifname}",
-    "format-wifi": "    ",
+    "format-wifi": "  ",
     "format-ethernet": " ",
     "format-disconnected": " ", //An empty format will hide the module.
     "tooltip-format": " {ifname} via {gwaddr}",
