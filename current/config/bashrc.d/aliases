@@ -14,3 +14,8 @@ alias now='date +"%T"' # show current time
 alias nowd='date +"%d-%m-%Y"' # show current date dd-mm-yyy
 alias df='df -h' # show disk usage in human-readable format
 alias dusage='du -sh * 2./dev/null' # sumary disk usage for each item in directory
+
+# Typos
+alias cd..='cd ..'
+alias dc='cd'
+alias sl='ls'
