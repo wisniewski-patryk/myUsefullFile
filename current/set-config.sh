@@ -3,10 +3,32 @@
 # --- Configuration ---
 # The source directory in your repository where your config files are stored.
 # This assumes the script is run from the root of your repo.
-SOURCE_DIR=".config"
+SOURCE_DIR="config"
 
 # The target directory for the symlinks (typically ~/.config)
 TARGET_BASE="$HOME/.config"
+
+# Addable flags
+FORCE_RM=""  # will be "-f" if user requests forcing rm
+
+# Simple argument parsing for -f / --force
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -f|--force)
+            FORCE_RM="-f"
+            shift
+            ;;
+        -h|--help)
+            echo "Usage: $(basename "$0") [-f|--force]"
+            echo "  -f, --force   pass -f to rm when removing existing symlinks"
+            exit 0
+            ;;
+        *)
+            # ignore unexpected args or treat them later
+            shift
+            ;;
+    esac
+done
 
 # --- Main Logic ---
 
@@ -45,7 +67,8 @@ for item in "$SOURCE_DIR"/*; do
     # Check if a symlink already exists and remove it to create a new one
     if [ -L "$TARGET_PATH" ]; then
         echo "🔄 Existing symlink found for '$ITEM_NAME'. Removing old link..."
-        rm "$TARGET_PATH"
+        # Pass through the force flag if enabled
+        rm $FORCE_RM "$TARGET_PATH"
     fi
 
     # Create the new symbolic link
