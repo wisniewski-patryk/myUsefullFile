@@ -44,5 +44,28 @@
 	"github.copilot.renameSuggestions.triggerAutomatically": false,
 	"window.menuBarVisibility": "compact",
 	"workbench.activityBar.location": "top",
-	"window.commandCenter": false
+	"window.commandCenter": false,
+	"cSpell.userWords": [
+		"Adyen",
+		"Autofac",
+		"Automapper",
+		"checkin",
+		"checkincheckout",
+		"Dormakaba",
+		"guestportal",
+		"Hotellinx",
+		"Infor",
+		"jsoneditor",
+		"Mediat",
+		"Multitenancy",
+		"Multitenant",
+		"Netaxept",
+		"Noda",
+		"Ohip",
+		"Speeron",
+		"subfolio",
+		"Tzdb",
+		"Upsell",
+		"Visbook"
+	]
 }
