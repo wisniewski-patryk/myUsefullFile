@@ -1,6 +1,4 @@
 * {
-  /* `otf-font-awesome` is required to be installed for icons */
-  font-family: JetBrainsMono Nerd Font;
   font-size: 1em;
   font-weight: bold;
 }
@@ -27,7 +25,6 @@ button {
 #workspaces button {
   padding: 0 5px;
   background-color: transparent;
-  /* color: @surface1; */
 }
 
 #workspaces button.active {
@@ -73,7 +70,6 @@ button {
 #custom-power {
   background-color: #1e1e2e;
   color: #82AAFF;
-  /* border-radius: 10px; */
   padding: 0px 8px;
 }
 
@@ -86,12 +82,12 @@ button {
 }
 
 #battery {
-  color: teal;
+  color: #82AAFF;
 }
 
 #battery.charging,
 #battery.plugged {
-  color: teal;
+  color: #82AAFF;
 }
 
 label:focus {
