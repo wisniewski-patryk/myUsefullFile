@@ -1,0 +1,25 @@
+configuration {
+  modes: [ combi ];
+  combi-modes: [ window, drun, run ];
+}
+
+entry {
+  placeholder: "type here";
+  background-color: #1e1e1e;
+}
+
+element {
+  orientation: horizontal;
+  children: [ element-icon, element-text ];
+  spacing: 5px;
+}
+
+element-text {
+  //background-color: #1e1e1e;
+  vertical-align: 0.5;
+}
+
+element-icon {
+    size: 1.2em;
+}
+@theme "/usr/share/rofi/themes/material.rasi"
