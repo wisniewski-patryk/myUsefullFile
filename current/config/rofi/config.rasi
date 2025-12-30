@@ -1,0 +1,17 @@
+@theme "material"
+
+window {
+	background-color: #1e1e2e; /*base00 + CC (80% opacity)*/
+}
+
+button {
+    background-color: #1e1e2e;
+}
+
+button selected {
+    background-color: #5774b0ff;
+}
+
+element selected {
+	background-color: #5774b0ff;
+}
