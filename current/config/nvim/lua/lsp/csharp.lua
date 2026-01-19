@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     
     -- Enable completion (if using Neovim 0.11+ built-in completion)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if client and client.supports_method('textDocument/completion') then
+    if client and client:supports_method('textDocument/completion') then
       vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
     end
   end,

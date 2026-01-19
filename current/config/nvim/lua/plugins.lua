@@ -32,7 +32,7 @@ require("which-key").setup({
 local ts = require('nvim-treesitter')
 
 -- Define which languages you want
-local ensure_installed = { "c_sharp", "lua", "vim", "vimdoc" }
+local ensure_installed = { "c_sharp", "lua", "vim", "vimdoc", "markdown" }
 
 -- Check what is already installed to avoid redundant compilations
 local installed = ts.get_installed()
@@ -53,6 +53,14 @@ vim.api.nvim_create_autocmd("FileType", {
     -- Enable Treesitter-based indentation
     vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
   end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "md" },
+    callback = function()
+        vim.treesitter.start()
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
 })
 
 require("nvim-tree").setup({
@@ -89,4 +97,30 @@ vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle File Ex
 -- Focus nvim-tree
 vim.keymap.set("n", "<leader>ef", ":NvimTreeFocus<CR>", { desc = "Focus File Explorer" })
 
-require("bufferline").setup({})
+require("bufferline").setup({
+    options = {
+        offsets = {
+            {
+                filetype = "NvimTree",
+                text = "File Explorer", -- Text shown above the offset
+                text_align = "left",    -- "left" | "center" | "right"
+                separator = true        -- Adds a vertical line between offset and tabs
+            },
+        },
+        indicator = {
+            icon = '📌', 
+            style = 'icon',
+        },
+    -- Other options...
+    diagnostics = "nvim_lsp",
+    }
+})
+vim.keymap.set("n", "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", { desc = "Toggle Pin" })
+vim.keymap.set('n', '<leader>bn', ':bn<CR>', { desc = 'Next Buffer' })
+vim.keymap.set('n', '<leader>bN', ':bp<CR>', { desc = 'Previous Buffer' })
+vim.keymap.set('n', '<leader>bx', ':bp|bd #<CR>', { desc = 'Close Buffer' })
+
+
+
+
+
