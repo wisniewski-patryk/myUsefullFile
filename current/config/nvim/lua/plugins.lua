@@ -14,7 +14,11 @@ vim.pack.add({
     { src = "https://github.com/akinsho/bufferline.nvim" },
 })
 
-require("nvim-autopairs").setup({})
+require("nvim-autopairs").setup({
+    options = {
+        preset = "modern"
+    }
+})
 
 require("tokyonight").setup({
     style = "night",
@@ -24,9 +28,7 @@ require("tokyonight").setup({
 vim.cmd([[colorscheme tokyonight]])
 
 require("which-key").setup({
-    opts = {
-        preset = "helix"
-    }
+
 })
 
 local ts = require('nvim-treesitter')
