@@ -32,8 +32,9 @@ port-arg = "--server={}"
 [[language.debugger.templates]]
 name = "launch"
 request = "launch"
-completion = [ { name = "path to dll", completion = "filename" } ]
-args = { type = "coreclr", console = "internalConsole", internalConsoleOptions = "openOnSessionStart", program = "{0}" }
+completion = [ { name = "binary", completion = "filename" } ]
+# args = { type = "coreclr", console = "internalConsole", internalConsoleOptions = "openOnSessionStart", program = "{0}" }
+args = { program = "{0}" }
 
 [[language.debugger.templates]]
 name = "attach"
