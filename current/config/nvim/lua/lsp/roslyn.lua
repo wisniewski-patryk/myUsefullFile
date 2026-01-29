@@ -2,17 +2,16 @@ vim.pack.add({
     { src = "https://github.com/seblyng/roslyn.nvim" }
 })
 
--- Ensure roslyn.nvim is loaded from your packpath
 local status, roslyn = pcall(require, "roslyn")
 
 if status then
     roslyn.setup({
-        -- Path to the directory containing Microsoft.CodeAnalysis.LanguageServer
+        -- Path to the directory containing Microsoft.CodeAnalysis.LanguageServer 
         -- If you have 'dotnet' in your PATH, the plugin usually finds the server automatically.
         -- Otherwise, specify the path to the executable here.
+        -- path to vscode analiser $HOME/.vscode/extensions/ms-dotnettools.csharp-2.113.22-linux-x64/.roslyn/Microsoft.CodeAnalysis.LanguageServer
         exe = 'Microsoft.CodeAnalysis.LanguageServer',
 
-        -- Arguments to pass to the server
         args = {
             '--logLevel=Information',
             '--extensionLogDirectory=' .. vim.fs.dirname(vim.lsp.get_log_path()),
