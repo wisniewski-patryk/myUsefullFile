@@ -1,7 +1,6 @@
 require("options")
 require("keybind")
 require("plugins")
-require("colorscheme")
+require("lsp")
 require("diagnostic")
-require("lsp.csharp")
 

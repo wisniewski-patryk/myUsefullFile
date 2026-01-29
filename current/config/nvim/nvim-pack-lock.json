@@ -4,6 +4,10 @@
       "rev": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3",
       "src": "https://github.com/akinsho/bufferline.nvim"
     },
+    "cmp-nvim-lsp": {
+      "rev": "cbc7b02bb99fae35cb42f514762b89b5126651ef",
+      "src": "https://github.com/hrsh7th/cmp-nvim-lsp"
+    },
     "mini.icons": {
       "rev": "efc85e42262cd0c9e1fdbf806c25cb0be6de115c",
       "src": "https://github.com/nvim-mini/mini.icons"
@@ -11,6 +15,10 @@
     "nvim-autopairs": {
       "rev": "c2a0dd0d931d0fb07665e1fedb1ea688da3b80b4",
       "src": "https://github.com/windwp/nvim-autopairs"
+    },
+    "nvim-cmp": {
+      "rev": "da88697d7f45d16852c6b2769dc52387d1ddc45f",
+      "src": "https://github.com/hrsh7th/nvim-cmp"
     },
     "nvim-lspconfig": {
       "rev": "92ee7d42320edfbb81f3cad851314ab197fa324a",
@@ -27,6 +35,10 @@
     "nvim-web-devicons": {
       "rev": "803353450c374192393f5387b6a0176d0972b848",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    },
+    "roslyn.nvim": {
+      "rev": "5c8ed91fda08ec9692815c506d9df396ad679375",
+      "src": "https://github.com/seblyng/roslyn.nvim"
     },
     "tokyonight.nvim": {
       "rev": "5da1b76e64daf4c5d410f06bcb6b9cb640da7dfd",
