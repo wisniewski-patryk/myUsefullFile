@@ -1,5 +1,25 @@
+# parse_git_branch: returns current git branch in parentheses, or empty
 parse_git_branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
-export PS1='\[\e[93m\](\A) \[\e[92m\]\]\u@\h \[\e[38;5;27m\]\w \[\e[91m\]$(parse_git_branch)\[\e[0m\] $ '
+cwdir_fun() {
+	local dir
+	dir="$(pwd)"
+	echo "$dir" | sed "s|$HOME|~|"
+}
+
+# Colored prompt parts as variables for readability
+# Time in yellow, wrapped in parentheses
+time_part='\[\e[93m\](\A)'
+# User and host in green
+user_host='\[\e[92m\]\u@\h'
+# Current working directory in blue (256-color)
+cwdir='\[\e[38;5;27m\]$(cwdir_fun)'
+# Git branch in red (wrapped by parse_git_branch)
+git_branch='\[\e[91m\]$(parse_git_branch)'
+# Reset color
+reset='\[\e[0m\]'
+
+# Assemble PS1 from parts, ending with a space and dollar sign
+PS1="${time_part} ${user_host} ${cwdir} ${git_branch}${reset} \$ "
