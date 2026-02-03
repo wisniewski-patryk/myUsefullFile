@@ -81,6 +81,11 @@ button {
   color: #82AAFF;
 }
 
+tooltip label {
+    font-family: "monospace";
+    font-size: 14px;
+}
+
 #battery {
   color: #82AAFF;
 }
